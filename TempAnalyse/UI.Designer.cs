@@ -90,7 +90,10 @@ partial class UI
         L_hottest_month = new System.Windows.Forms.Label();
         label33 = new System.Windows.Forms.Label();
         label34 = new System.Windows.Forms.Label();
-        L_Debug = new System.Windows.Forms.Label();
+        TB_year = new System.Windows.Forms.TextBox();
+        B_chart = new System.Windows.Forms.Button();
+        B_chartDays = new System.Windows.Forms.Button();
+        B_heat = new System.Windows.Forms.Button();
         SuspendLayout();
         // 
         // CBB_time
@@ -100,6 +103,7 @@ partial class UI
         CBB_time.Name = "CBB_time";
         CBB_time.Size = new System.Drawing.Size(121, 28);
         CBB_time.TabIndex = 2;
+        CBB_time.SelectedIndexChanged += CBB_time_SelectedIndexChanged;
         // 
         // label1
         // 
@@ -121,7 +125,7 @@ partial class UI
         // 
         // label_sensor_1
         // 
-        label_sensor_1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label_sensor_1.Font = new System.Drawing.Font("Segoe UI Semibold", 7.6800003F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label_sensor_1.Location = new System.Drawing.Point(11, 71);
         label_sensor_1.Name = "label_sensor_1";
         label_sensor_1.Size = new System.Drawing.Size(56, 29);
@@ -130,7 +134,7 @@ partial class UI
         // 
         // label2
         // 
-        label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.6800003F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label2.Location = new System.Drawing.Point(399, 71);
         label2.Name = "label2";
         label2.Size = new System.Drawing.Size(56, 29);
@@ -139,7 +143,7 @@ partial class UI
         // 
         // label3
         // 
-        label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.6800003F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label3.Location = new System.Drawing.Point(399, 245);
         label3.Name = "label3";
         label3.Size = new System.Drawing.Size(56, 29);
@@ -148,7 +152,7 @@ partial class UI
         // 
         // label4
         // 
-        label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label4.Font = new System.Drawing.Font("Segoe UI Semibold", 7.6800003F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label4.Location = new System.Drawing.Point(11, 245);
         label4.Name = "label4";
         label4.Size = new System.Drawing.Size(56, 29);
@@ -157,7 +161,7 @@ partial class UI
         // 
         // label5
         // 
-        label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label5.Font = new System.Drawing.Font("Segoe UI Semibold", 7.6800003F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label5.Location = new System.Drawing.Point(748, 245);
         label5.Name = "label5";
         label5.Size = new System.Drawing.Size(56, 29);
@@ -166,7 +170,7 @@ partial class UI
         // 
         // label6
         // 
-        label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        label6.Font = new System.Drawing.Font("Segoe UI Semibold", 7.6800003F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
         label6.Location = new System.Drawing.Point(748, 71);
         label6.Name = "label6";
         label6.Size = new System.Drawing.Size(56, 29);
@@ -589,20 +593,53 @@ partial class UI
         label34.TabIndex = 59;
         label34.Text = "Heißester Monat";
         // 
-        // L_Debug
+        // TB_year
         // 
-        L_Debug.Location = new System.Drawing.Point(748, 413);
-        L_Debug.Name = "L_Debug";
-        L_Debug.Size = new System.Drawing.Size(218, 23);
-        L_Debug.TabIndex = 63;
-        L_Debug.Text = "Debug";
+        TB_year.Location = new System.Drawing.Point(117, 45);
+        TB_year.Name = "TB_year";
+        TB_year.Size = new System.Drawing.Size(121, 27);
+        TB_year.TabIndex = 64;
+        TB_year.Visible = false;
+        // 
+        // B_chart
+        // 
+        B_chart.Location = new System.Drawing.Point(461, 11);
+        B_chart.Name = "B_chart";
+        B_chart.Size = new System.Drawing.Size(185, 28);
+        B_chart.TabIndex = 65;
+        B_chart.Text = "Diagramm Uhrzeiten";
+        B_chart.UseVisualStyleBackColor = true;
+        B_chart.Click += B_chart_Click;
+        // 
+        // B_chartDays
+        // 
+        B_chartDays.Location = new System.Drawing.Point(652, 11);
+        B_chartDays.Name = "B_chartDays";
+        B_chartDays.Size = new System.Drawing.Size(185, 28);
+        B_chartDays.TabIndex = 66;
+        B_chartDays.Text = "Diagramm Tage";
+        B_chartDays.UseVisualStyleBackColor = true;
+        B_chartDays.Click += B_chartDays_Click;
+        // 
+        // B_heat
+        // 
+        B_heat.Location = new System.Drawing.Point(843, 11);
+        B_heat.Name = "B_heat";
+        B_heat.Size = new System.Drawing.Size(185, 28);
+        B_heat.TabIndex = 67;
+        B_heat.Text = "Höhepunkte";
+        B_heat.UseVisualStyleBackColor = true;
+        B_heat.Click += B_heat_Click;
         // 
         // UI
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        ClientSize = new System.Drawing.Size(1116, 450);
-        Controls.Add(L_Debug);
+        ClientSize = new System.Drawing.Size(1120, 466);
+        Controls.Add(B_heat);
+        Controls.Add(B_chartDays);
+        Controls.Add(B_chart);
+        Controls.Add(TB_year);
         Controls.Add(L_hottest_year);
         Controls.Add(L_hottest_month);
         Controls.Add(label33);
@@ -667,9 +704,16 @@ partial class UI
         Text = "UI";
         Load += UI_Load;
         ResumeLayout(false);
+        PerformLayout();
     }
 
-    private System.Windows.Forms.Label L_Debug;
+    private System.Windows.Forms.Button B_heat;
+
+    private System.Windows.Forms.Button B_chartDays;
+
+    private System.Windows.Forms.Button B_chart;
+
+    private System.Windows.Forms.TextBox TB_year;
 
     private System.Windows.Forms.Label L_hottest_year;
     private System.Windows.Forms.Label L_hottest_month;
